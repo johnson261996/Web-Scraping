@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:web_scraping/screen/product.dart';
 import 'model/Article.dart';
 
 void main() {
@@ -104,11 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         subtitle:Text(article.desc,style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 12)),
                        leading:Image.network(article.urlimage,fit: BoxFit.fill),
                         onTap: () async {
-                          final url = article.url;
+                          /*final url = article.url;
                           if (await canLaunchUrl(Uri.parse(url)))
                            await launchUrl(Uri.parse(url));
                           else
-                            throw "Could not launch $url";
+                            throw "Could not launch $url";*/
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductScreen(title: article.title,subtitle:article.desc,image:article.urlimage,url:article.url),
+                              ));
                         },
                       ),
                     //Text(article.url, style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
