@@ -1,4 +1,5 @@
-
+import 'package:html/parser.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,12 @@ class ProductScreen extends StatelessWidget {
                 child: Text("Add to Cart"),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                    if (await canLaunchUrl(Uri.parse(url)))
+                           await launchUrl(Uri.parse(url));
+                      else
+                    throw "Could not launch $url";
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.deepOrange,//specify the button's disabled text, icon, and fill color

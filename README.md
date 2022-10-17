@@ -1,6 +1,6 @@
 # web_scraping
 
-It is a app which extracts the content from flipcart website.
+It is a app which extracts the content from Flipcart website.
 
 ##  Screenshots
 
